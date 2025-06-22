@@ -82,8 +82,8 @@ pip install opencv-python mediapipe customtkinter Pillow ultralytics
 1. Kunjungi [Roboflow](https://roboflow.com/)
 2. Buat **Project Baru** (Type: *Object Detection*)
 3. Upload gambar helm dan labeli seperti:
-   - `Helm Al`
-   - `Helm Erika`
+   - `Helm "Namanya"`
+   - `Helm "Namanya"`
    - dll.
 4. Klik **"Generate"**
 5. Pilih format export: **YOLOv8 PyTorch**
@@ -117,10 +117,10 @@ helmet_model = YOLO("best.pt")
 ### Struktur Folder:
 ```
 image/
-├── al_depan.jpg
-├── ilham_depan.jpg
-├── wahyu.jpg
-└── erika.jpg
+├── "Nama Foto".jpg
+├── "Nama Foto".jpg
+├── "Nama Foto".jpg
+└── "Nama Foto".jpg
 ```
 
 ### Langkah:
@@ -129,7 +129,7 @@ image/
    - Syarat: Wajah depan & terang
 2. Tambahkan ke kode:
 ```python
-load_and_encode_image('image/al_depan.jpg', 'Al')
+load_and_encode_image('image/Nama Foto.jpg', 'Label Namanya')
 ```
 
 ---
@@ -162,7 +162,7 @@ cap = cv2.VideoCapture('http://IP_ADDRESS:8080/?action=stream')
 ➡️ Pastikan gambar wajah jelas & sudah ditambahkan ke folder + kode.
 
 **Q: Helm tidak terdeteksi?**  
-➡️ Cek kembali label class di Roboflow, contoh: `Helm Erika`
+➡️ Cek kembali label class di Roboflow, contoh: `Helm Namanya`
 
 ---
 
