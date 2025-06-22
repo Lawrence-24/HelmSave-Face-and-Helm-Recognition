@@ -203,5 +203,5 @@ cap = cv2.VideoCapture('http://IP_ADDRESS:8080/?action=stream')
 Selamat! Sistem deteksi wajah dan helm siap dijalankan 🎉
 
 ```bash
-python main.py
+python helmsave.py
 ```
