@@ -87,19 +87,32 @@ pip install opencv-python mediapipe customtkinter Pillow ultralytics
    - dll.
 4. Klik **"Generate"**
 5. Pilih format export: **YOLOv8 PyTorch**
-6. Download file `.zip`
+6. Klik tombol **Download**:
+   - Pilih format: `YOLOv8 PyTorch`
+   - Centang opsi ✅ **Show download code**
+   - Salin kode Python yang muncul (akan digunakan di Colab)
 
 ---
 
 ### Langkah 2: Training di Google Colab
 ```python
-!pip install ultralytics
-from ultralytics import YOLO
+from google.colab import drive
+drive.mount('/content/drive')
 
-model = YOLO("yolov8n.pt")  # Bisa ganti ke yolov8s.pt
-model.train(data="/content/your-dataset/data.yaml", epochs=50, imgsz=640)
-```
-> Setelah selesai, download file `best.pt`
+!pip install roboflow ultralytics
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="MASUKKAN_API_KEY_KAMU")
+project = rf.workspace("nama-workspace").project("nama-project")
+dataset = project.version(1).download("yolov8")
+# Dataset akan berada di: /content/nama-folder-dataset/data.yaml
+
+from ultralytics import YOLO
+model = YOLO("yolov8n.pt")  # Bisa ganti ke yolov8s.pt, yolov8m.pt, dll
+model.train(data="/content/nama-folder-dataset/data.yaml", epochs=50, imgsz=640)
+
+!cp /content/runs/detect/train/weights/best.pt /content/drive/MyDrive/HelmSave_Dataset/
+# File best.pt akan tersimpan di Google Drive
 
 ---
 
