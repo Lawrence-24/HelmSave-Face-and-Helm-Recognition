@@ -95,24 +95,41 @@ pip install opencv-python mediapipe customtkinter Pillow ultralytics
 ---
 
 ### Langkah 2: Training di Google Colab
+1. Salin Code yang Ditampilkan
 ```python
-from google.colab import drive
-drive.mount('/content/drive')
-
-!pip install roboflow ultralytics
-
 from roboflow import Roboflow
 rf = Roboflow(api_key="MASUKKAN_API_KEY_KAMU")
 project = rf.workspace("nama-workspace").project("nama-project")
 dataset = project.version(1).download("yolov8")
 # Dataset akan berada di: /content/nama-folder-dataset/data.yaml
+```python
 
+2. Menyimpan Dataset ke Google Drive
+Karena file yang diunduh ke Google Colab akan hilang setelah runtime berakhir, kamu perlu menyimpan dataset ke Google Drive.
+Mount Google Drive :
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```python
+
+3. Install Ultralytics (YOLOv8)
+```python
+!pip install roboflow ultralytics
+```python
+
+4. Import YOLO dan mulai training
+```python
 from ultralytics import YOLO
 model = YOLO("yolov8n.pt")  # Bisa ganti ke yolov8s.pt, yolov8m.pt, dll
 model.train(data="/content/nama-folder-dataset/data.yaml", epochs=50, imgsz=640)
+```python
 
-!cp /content/runs/detect/train/weights/best.pt /content/drive/MyDrive/HelmSave_Dataset/
+5. Jika ingin copy folder runs ke Google Drive agar dapat menyimpan dan download file best.pt
+```python
+!cp -r /content/runs /content/drive/MyDrive/HelmSave_Dataset/
+```python
 # File best.pt akan tersimpan di Google Drive
+
 
 ---
 
