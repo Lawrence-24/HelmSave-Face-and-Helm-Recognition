@@ -130,7 +130,7 @@ model.train(data="/content/nama-folder-dataset/data.yaml", epochs=50, imgsz=640)
 ```
 File best.pt akan tersimpan di Google Drive
 
-Link Drive Projek Saya [GDrive](https://drive.google.com/drive/folders/1KDdA6fi3rlwlSHjiUUfTepkF3QIr0zhz?usp=sharing)
+Link Drive Projek ini [GDrive](https://drive.google.com/drive/folders/1KDdA6fi3rlwlSHjiUUfTepkF3QIr0zhz?usp=sharing)
 
 
 ---
